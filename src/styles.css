@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('./background.jpg'); /* Use relative path if the image is in 'public' */
+    height: 100%;
+    background-size: cover;
+    
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  input, button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-item, .cart-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
