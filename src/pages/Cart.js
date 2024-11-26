@@ -127,7 +127,7 @@ return (
           <h3 className="text-xl font-bold">Total: ${total.toFixed(2)}</h3>
           <button
             className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-            onClick={() => (window.location.href = '/checkout')}
+            onClick={() => navigate('/checkout')}
           >
             Proceed to Checkout
           </button>
