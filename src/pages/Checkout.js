@@ -41,12 +41,7 @@ function Checkout() {
         }
       );
 
-      const updatedCart = cartItems.filter(
-        (item) => !selectedItems.includes(item.productId._id)
-      );
-      setCartItems(updatedCart);
-      setSelectedItems([]); // Clear selection
-      calculateTotal(updatedCart);
+      
 
       alert('Order placed successfully!');
       navigate('/thankyou'); // Redirect to Thank You page
