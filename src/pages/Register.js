@@ -9,7 +9,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { email, password, name });
+      await axios.post('https://shopease-backend-j304.onrender.comapi/auth/register', { email, password, name });
       alert('Registration successful! Please log in.');
       window.location.href = '/login';
     } catch (err) {
