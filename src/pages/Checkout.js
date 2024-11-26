@@ -15,7 +15,7 @@ function Checkout() {
       try {
         const token = localStorage.getItem('token');
         const response = await axios.get(
-          `https://shopease-backend-j304.onrender.comapi/cart/all/${userId}`,
+          `https://shopease-backend-j304.onrender.com/api/cart/all/${userId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -56,7 +56,7 @@ function Checkout() {
 
       // Send order to the backend
       await axios.post(
-        'https://shopease-backend-j304.onrender.comapi/orders/create/${userId}',
+        `https://shopease-backend-j304.onrender.com/api/orders/create/${userId}`,
         orderData,
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -11,7 +11,7 @@ function Cart() {
     const fetchCartItems = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`https://shopease-backend-j304.onrender.comapi/cart/all/${userId}`, {
+        const response = await axios.get(`https://shopease-backend-j304.onrender.com/api/cart/all/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -39,7 +39,7 @@ const updateQuantity = async (itemId, newQuantity) => {
   try {
     const token = localStorage.getItem('token');
     await axios.put(
-      `https://shopease-backend-j304.onrender.comapi/cart/${itemId}`,
+      `https://shopease-backend-j304.onrender.com/api/cart/${itemId}`,
       { quantity: newQuantity ,userId:userId},
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -60,7 +60,7 @@ const removeItem = async (itemId) => {
   console.log(itemId,"itemId");
   try {
     const token = localStorage.getItem('token');
-    await axios.delete(`https://shopease-backend-j304.onrender.comapi/cart/${itemId}?userId=${userId}`, {
+    await axios.delete(`https://shopease-backend-j304.onrender.com/api/cart/${itemId}?userId=${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
       
     });

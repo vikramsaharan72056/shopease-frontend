@@ -10,7 +10,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://shopease-backend-j304.onrender.comapi/auth/login', { email, password });
+      const response = await axios.post('https://shopease-backend-j304.onrender.com/api/auth/login', { email, password });
       console.log(response.data);
       login(response.data.token, response.data.userId);
     } catch (err) {

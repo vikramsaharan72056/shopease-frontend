@@ -15,7 +15,7 @@ function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://shopease-backend-j304.onrender.comapi/products');
+        const response = await axios.get('https://shopease-backend-j304.onrender.com/api/products');
         setProducts(response.data);
         setCategories([...new Set(response.data.map((product) => product.category))]);
       } catch (err) {
@@ -34,7 +34,7 @@ function Products() {
         return;
       }
       const response = await axios.post(
-        'https://shopease-backend-j304.onrender.comapi/cart/add',
+        'https://shopease-backend-j304.onrender.com/api/cart/add',
         {
           productId,
           quantity: 1,
