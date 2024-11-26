@@ -72,11 +72,11 @@ function Checkout() {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container  w-1/2 h-1/2 mx-auto p-6 ">
       <h2 className="text-3xl font-bold text-center mb-6">Checkout</h2>
       
       {/* Cart Items */}
-      <div className="space-y-4 bg-gray-50 rounded shadow-sm">
+      <div className="space-y-4 bg-gray-50 rounded shadow-sm ">
         {cartItems.map((item) => (
           <div key={item.productId._id} className="flex items-center justify-between p-4 border rounded shadow-sm">
             <img src={item.productId.image} alt={item.productId.name} className="w-16 h-16 object-cover rounded" />
