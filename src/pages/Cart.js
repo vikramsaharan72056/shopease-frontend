@@ -152,7 +152,7 @@ function Cart() {
                 </button>
               </div>
               <button
-                className="text-red-600 hover:underline"
+                
                 onClick={() => removeItem(item.productId._id)}
               >
                 <img src="/delete.png" alt="delete" className="ml-4 w-6 h-6" />
