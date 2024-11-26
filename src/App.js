@@ -7,6 +7,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
+import ThankYou from './pages/Thankyou';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path='/thankyou' element={<ThankYou/>} />
           
         </Routes>
       </main>
