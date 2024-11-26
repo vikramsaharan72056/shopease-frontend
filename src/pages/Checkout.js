@@ -1,42 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 function Checkout() {
+  const {state} = useLocation();
   const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState(0);
+  
   const [paymentMethod, setPaymentMethod] = useState('credit-card');
   const navigate = useNavigate();
 
   const userId = localStorage.getItem('userId');
+  const {selectedProducts , subtotal} = state || {};
 
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get(
-          `https://shopease-backend-j304.onrender.com/api/cart/all/${userId}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        setCartItems(response.data[0].products); // Assuming products are in `response.data[0].products`
-        calculateTotal(response.data[0].products); // Pass correct data structure
-      } catch (err) {
-        console.error('Failed to fetch cart items', err);
-      }
-    };
+  
 
-    fetchCartItems();
-  }, []);
-
-  const calculateTotal = (items) => {
-    const sum = items.reduce(
-      (acc, item) => acc + item.productId.price * item.quantity,
-      0
-    );
-    setTotal(sum);
-  };
+  
 
   const handleCheckout = async () => {
     try {
@@ -49,7 +27,7 @@ function Checkout() {
           price: item.productId.price,
           quantity: item.quantity,
         })),
-        totalAmount: total,
+        totalAmount: subtotal,
         paymentMethod,
         isPaid: paymentMethod !== 'cash-on-delivery', // Automatically mark as paid unless COD
       };
@@ -62,6 +40,13 @@ function Checkout() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+
+      const updatedCart = cartItems.filter(
+        (item) => !selectedItems.includes(item.productId._id)
+      );
+      setCartItems(updatedCart);
+      setSelectedItems([]); // Clear selection
+      calculateTotal(updatedCart);
 
       alert('Order placed successfully!');
       navigate('/thankyou'); // Redirect to Thank You page
@@ -77,7 +62,7 @@ function Checkout() {
       
       {/* Cart Items */}
       <div className="space-y-4 bg-gray-50 rounded shadow-sm ">
-        {cartItems.map((item) => (
+        {selectedProducts.map((item) => (
           <div key={item.productId._id} className="flex items-center justify-between p-4 border rounded shadow-sm">
             <img src={item.productId.image} alt={item.productId.name} className="w-16 h-16 object-cover rounded" />
             <div className="flex-1 ml-4">
@@ -93,7 +78,7 @@ function Checkout() {
 
       {/* Total Price */}
       <div className="mt-6 p-4 bg-gray-100 rounded shadow-sm">
-        <h3 className="text-xl font-semibold">Total: ${total.toFixed(2)}</h3>
+        <h3 className="text-xl font-semibold">Total: ${subtotal.toFixed(2)}</h3>
       </div>
 
       {/* Payment Method Selection */}
