@@ -1,10 +1,18 @@
 import React from 'react';
 
+import { useAuth } from '../context/AuthContext';
+
 function Header() {
+
+  const {logout} = useAuth();
+  const token = localStorage.getItem('token');
+
+  
   return (
     <header className="bg-blue-600 text-white py-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">ShopEase</h1>
+        <a href='/'>
+        <h1 className="text-xl font-bold" >ShopEase</h1> </a>
         <nav>
           <ul className="flex space-x-4">
             <li>
@@ -23,14 +31,23 @@ function Header() {
               </a>
             </li>
             <li>
-              <a href="/products" className="hover:underline">
+              <a href="/" className="hover:underline">
                 Products
               </a>
             </li>
             <li>
-              <a href="/logout" className="hover:underline">
-                Logout
-              </a>
+              {
+                token ? (
+                  <a href="/logout" className="hover:underline" onClick={() => logout() }>
+                    Logout
+                  </a>
+                ) : (
+                  <a href="/login" className="hover:underline">
+                    Login
+                  </a>
+                )
+              }
+              
             </li>
           </ul>
         </nav>

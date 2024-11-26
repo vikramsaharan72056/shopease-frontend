@@ -16,13 +16,15 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (token,userId) => {
-    localStorage.setItem('token', token); // Save token in localStorage
+    localStorage.setItem('token', token);
+    localStorage.setItem('userId', userId); // Save token in localStorage
     setUser({ token,userId }); // Set user state with token
     navigate('/'); // Redirect to home
   };
 
   const logout = () => {
     localStorage.removeItem('token'); // Remove token from localStorage
+    localStorage.removeItem('userId');
     setUser(null); // Clear user state
     navigate('/login'); // Redirect to login
   };

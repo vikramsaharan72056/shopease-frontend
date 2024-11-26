@@ -12,7 +12,7 @@ function App() {
   return (
 
 
-    <div className="flex flex-col min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/background.jpg')" }}>
+    <div className="flex flex-col min-h-screen bg-cover bg-center" style={{ backgroundImage: "./backgroud.jpg" }}>
       <Header />
       <main className="flex-grow container mx-auto py-8">
        
@@ -22,6 +22,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          
         </Routes>
       </main>
       <Footer />

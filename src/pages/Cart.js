@@ -9,9 +9,10 @@ function Cart() {
     const fetchCartItems = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('https://shopease-backend-j304.onrender.com/api/cart', {
+        const response = await axios.get('https://shopease-backend-j304.onrender.com/api/cart/all', {
           headers: { Authorization: `Bearer ${token}` },
         });
+        console.log(response.data);
         setCartItems(response.data.items);
         calculateTotal(response.data.items);
       } catch (err) {

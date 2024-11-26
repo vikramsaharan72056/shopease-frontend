@@ -12,7 +12,7 @@ function Login() {
     try {
       const response = await axios.post('https://shopease-backend-j304.onrender.com/api/auth/login', { email, password });
       console.log(response.data);
-      login(response.data.token);
+      login(response.data.token, response.data.userId);
     } catch (err) {
       console.error('Login failed', err);
       alert('Invalid credentials');
