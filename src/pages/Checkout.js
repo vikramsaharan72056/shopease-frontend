@@ -41,7 +41,9 @@ function Checkout() {
         }
       );
 
-      
+      // clear the useLocation state
+      setCartItems([]);
+    
 
       alert('Order placed successfully!');
       navigate('/thankyou'); // Redirect to Thank You page

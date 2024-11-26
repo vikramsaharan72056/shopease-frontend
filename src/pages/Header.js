@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../context/AuthContext';
 
@@ -6,6 +7,7 @@ function Header() {
 
   const {logout} = useAuth();
   const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   
   return (
@@ -21,20 +23,16 @@ function Header() {
               </a>
             </li>
             <li>
-              <a href="/cart" className="hover:underline">
+              <a href="#" className="hover:underline" onClick={() => navigate('/cart')}>
                 Cart
               </a>
             </li>
             <li>
-              <a href="/checkout" className="hover:underline">
+              <a href="#" className="hover:underline" onClick={() => navigate('/checkout')}>
                 Checkout
               </a>
             </li>
-            <li>
-              <a href="/" className="hover:underline">
-                Products
-              </a>
-            </li>
+            
             <li>
               {
                 token ? (
@@ -42,7 +40,7 @@ function Header() {
                     Logout
                   </a>
                 ) : (
-                  <a href="/login" className="hover:underline">
+                  <a href="#" className="hover:underline" onClick={() => navigate('/login')}>
                     Login
                   </a>
                 )
