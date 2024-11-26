@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const userId = localStorage.getItem('userId');
   console.log(userId,"userId");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCartItems = async () => {
