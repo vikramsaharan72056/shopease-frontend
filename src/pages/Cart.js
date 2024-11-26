@@ -12,8 +12,8 @@ function Cart() {
         const response = await axios.get('https://shopease-backend-j304.onrender.com/api/cart/all', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response.data);
-        setCartItems(response.data.items);
+        console.log(response.data[0]);
+        setCartItems(response.data[0].products);
         calculateTotal(response.data.items);
       } catch (err) {
         console.error('Failed to fetch cart items', err);
