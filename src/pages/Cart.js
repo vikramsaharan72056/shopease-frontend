@@ -108,7 +108,7 @@ function Cart() {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
-      {cartItems.length === 0 ? (
+      {cartItems?.length === 0 ? (
         <div>
         <p className="text-gray-600">Your cart is empty.</p>
         <p>Please add items to your cart <Link to="/">here</Link></p>
