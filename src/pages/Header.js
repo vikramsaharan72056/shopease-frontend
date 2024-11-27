@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../context/AuthContext';
 
@@ -18,31 +18,24 @@ function Header() {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <a href="/" className="hover:underline">
-                Home
-              </a>
+              
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline" onClick={() => navigate('/cart')}>
-                Cart
-              </a>
+              <Link to="/cart">Cart</Link>
             </li>
             <li>
-              <a href="#" className="hover:underline" onClick={() => navigate('/checkout')}>
-                Checkout
-              </a>
+              <Link to="/checkout">Checkout</Link>
             </li>
             
             <li>
               {
                 token ? (
-                  <a href="/logout" className="hover:underline" onClick={() => logout() }>
+                  <a href="#" className="hover:underline" onClick={() => logout() }>
                     Logout
                   </a>
                 ) : (
-                  <a href="#" className="hover:underline" onClick={() => navigate('/login')}>
-                    Login
-                  </a>
+                  <Link to="/login">Login</Link>
                 )
               }
               
