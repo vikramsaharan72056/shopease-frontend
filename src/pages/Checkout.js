@@ -19,6 +19,7 @@ function Checkout() {
   const handleCheckout = async () => {
     try {
       const token = localStorage.getItem('token');
+      const orderedProductIds = selectedProducts.map((item) => item.productId._id);
       const orderData = {
         userId,
         items: cartItems.map((item) => ({
