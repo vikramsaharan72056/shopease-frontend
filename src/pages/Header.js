@@ -15,7 +15,7 @@ function Header() {
       <div className="container mx-auto flex justify-between items-center">
         <a href='/'>
         <h1 className="text-xl font-bold" >ShopEase</h1> </a>
-        <nav>
+        <nav className="mr-4">
           <ul className="flex space-x-4">
             <li>
               
