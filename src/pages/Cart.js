@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -109,7 +109,11 @@ function Cart() {
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
       {cartItems.length === 0 ? (
+        <div>
         <p className="text-gray-600">Your cart is empty.</p>
+        <p>Please add items to your cart <Link to="/">here</Link></p>
+        </div>
+
       ) : (
         <div>
           {cartItems.map((item) => (
