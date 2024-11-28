@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 function Login() {
   const { login } = useAuth();
@@ -54,9 +56,9 @@ function Login() {
           </button>
           <p className="text-center mt-4">
             Don't have an account?{' '}
-            <a href="/register" className="text-blue-500 hover:underline">
+            <Link to="/register" className="text-blue-500 hover:underline">
               Register
-            </a>
+            </Link>
           </p>
         </form>
       </div>
